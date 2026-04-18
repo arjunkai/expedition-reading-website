@@ -1,0 +1,40 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+  phase?: "2" | "3";
+}
+
+const {
+  eyebrow = "Coming soon",
+  title,
+  intro = "This page is part of our site rebuild, which is in progress. The content lives in our Phase 2 plan and will land shortly.",
+  phase = "2",
+} = Astro.props;
+---
+
+<section class="mx-auto max-w-[900px] px-6 py-24 md:py-32 text-center">
+  <div class="label-mono flex items-center justify-center gap-3 text-gold-text">
+    <span aria-hidden="true" class="inline-block h-px w-10 bg-current"></span>
+    <span>{eyebrow}</span>
+    <span aria-hidden="true" class="inline-block h-px w-10 bg-current"></span>
+  </div>
+  <h1
+    class="mt-8 font-display font-bold leading-[1] tracking-[-0.02em] text-brown text-[clamp(2.5rem,6vw,5rem)]"
+    style="font-variation-settings: 'opsz' 144, 'SOFT' 25, 'wght' 700;"
+  >
+    {title}
+  </h1>
+  <p class="prose-body mt-8 mx-auto max-w-[54ch] text-lg md:text-xl text-muted-brown">
+    {intro}
+  </p>
+  <p class="mt-6 text-sm text-muted-brown">
+    Tracked in <code class="font-mono text-xs bg-border-cream/60 px-2 py-1 rounded">docs/superpowers/plans/phase-{phase}</code>.
+  </p>
+  <div class="mt-12">
+    <a href="/" class="editorial-link label-mono text-brown hover:text-gold-text">
+      ← Back to home
+    </a>
+  </div>
+</section>

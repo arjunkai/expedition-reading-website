@@ -1,0 +1,94 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/Button.astro";
+import { SITE } from "@/lib/site";
+---
+
+<BaseLayout
+  title="Contact"
+  description="Get in touch with Expedition Reading. We respond to email within a week, often sooner."
+>
+  <section class="px-6 pt-16 pb-12 md:pt-24 md:pb-16">
+    <div class="mx-auto max-w-[1100px]">
+      <div class="label-mono flex items-center gap-3 text-teal-text">
+        <span aria-hidden="true" class="inline-block h-px w-10 bg-current"></span>
+        <span>Contact</span>
+      </div>
+      <h1
+        class="mt-6 font-display font-bold leading-[1] tracking-[-0.02em] text-brown text-[clamp(2.5rem,6vw,5rem)] max-w-[18ch]"
+        style="font-variation-settings: 'opsz' 144, 'SOFT' 25, 'wght' 700;"
+      >
+        Tell us what you're <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 600;">thinking</span>.
+      </h1>
+      <p class="prose-body mt-8 text-lg md:text-xl text-muted-brown max-w-[60ch]">
+        Whether you're interested in partnering, donating, hosting a drive, volunteering, or you just have a question,
+        email is the fastest way to reach us. We aim to respond within a week, usually sooner.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-paper border-y border-border-cream px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-[1100px] grid gap-12 md:gap-20 md:grid-cols-[1fr_1fr]">
+      <div>
+        <p class="label-mono text-gold-text">Email</p>
+        <p
+          class="mt-4 font-display font-bold text-2xl md:text-3xl text-brown leading-tight"
+          style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
+        >
+          <a href={`mailto:${SITE.contactEmail}`} class="editorial-link">{SITE.contactEmail}</a>
+        </p>
+        <p class="prose-body mt-6 text-base text-muted-brown">
+          General inquiries, partnership questions, donation follow-up, media requests. Everything lands in the same inbox and we triage daily.
+        </p>
+      </div>
+
+      <div>
+        <p class="label-mono text-teal-text">Social</p>
+        <p
+          class="mt-4 font-display font-bold text-2xl md:text-3xl text-brown leading-tight"
+          style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
+        >
+          <a href={SITE.socials.instagram} rel="noopener noreferrer" target="_blank" class="editorial-link">@expeditionreading</a>
+        </p>
+        <p class="prose-body mt-6 text-base text-muted-brown">
+          Photos from recent drives, partner features, and day-to-day work. DMs open.
+        </p>
+      </div>
+    </div>
+
+    <div class="mx-auto max-w-[1100px] mt-20 grid gap-12 md:grid-cols-[1fr_1fr]">
+      <div>
+        <p class="label-mono text-red-text">Mailing</p>
+        <p class="prose-body mt-4 text-base md:text-lg text-brown leading-relaxed">
+          Expedition Reading, Inc.<br />
+          Marietta, GA<br />
+          <span class="text-sm text-muted-brown">Full mailing address available on request for check donations.</span>
+        </p>
+      </div>
+      <div>
+        <p class="label-mono text-gold-text">Legal &amp; financials</p>
+        <p class="prose-body mt-4 text-base md:text-lg text-brown">
+          Our EIN, annual Form 990, and audited financials are available on request to donors, grant reviewers, and journalists.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-20 md:py-24">
+    <div class="mx-auto max-w-[820px] text-center">
+      <div class="label-mono text-gold-text mb-4">
+        Response Time
+      </div>
+      <p
+        class="font-display text-xl md:text-2xl text-brown leading-relaxed"
+        style="font-variation-settings: 'opsz' 24, 'SOFT' 50, 'wght' 500;"
+      >
+        Most emails get a reply within two business days. If you haven't heard from us in a week, please send a follow-up.
+        Sometimes the filter catches things.
+      </p>
+      <div class="mt-8">
+        <Button variant="primary" href={`mailto:${SITE.contactEmail}`}>Email us now →</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

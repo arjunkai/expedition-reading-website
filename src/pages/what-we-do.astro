@@ -1,0 +1,145 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import CtaSection from "@/components/CtaSection.astro";
+import volunteersPhoto from "@/assets/images/volunteers-portrait.jpg";
+
+const programs = (await getCollection("programs")).sort((a, b) => a.data.order - b.data.order);
+
+const details = {
+  "hospital-bassinet-books": {
+    how: "We coordinate with labor & delivery nursing teams to stock a supply of age-appropriate board books. Every family leaves with a book tucked into their going-home bag. No application, no means test.",
+    impact: "Reaches families at day one, the moment where reading habits begin. Normalizes books as part of newborn care alongside pediatrician visits and vaccines.",
+    need: "Hospital partners, board-book donations (new only), and volunteer book-packers.",
+  },
+  "school-partnerships": {
+    how: "We work with Title I elementary teachers and librarians to stock classroom libraries and provide take-home reading kits at winter and summer breaks, the two windows when reading gaps widen fastest.",
+    impact: "Keeps books flowing to kids whose homes don't have them, and keeps them reading through breaks from school.",
+    need: "School district introductions, new or gently-used children's books, and classroom reading kit assemblers.",
+  },
+  "community-drives": {
+    how: "We provide hosts with signage, a donation bin, a collection target, and scheduled pickup. Corporate offices, faith communities, youth sports leagues. If you have a lobby and a network, you can run one.",
+    impact: "Brings new donors into our supply chain and raises visibility in neighborhoods where the work shows up most.",
+    need: "Drive hosts, new or gently-used children's books, and volunteer drivers for pickup days.",
+  },
+} as const;
+---
+
+<BaseLayout
+  title="What We Do"
+  description="Three programs getting books to children from day one: Hospital Bassinet Books, School Partnerships, and Community Drives."
+>
+  <section class="px-6 pt-16 pb-12 md:pt-24 md:pb-16">
+    <div class="mx-auto max-w-[1100px]">
+      <div class="label-mono flex items-center gap-3 text-teal-text">
+        <span aria-hidden="true" class="inline-block h-px w-10 bg-current"></span>
+        <span>What We Do</span>
+      </div>
+      <h1
+        class="mt-6 font-display font-bold leading-[1] tracking-[-0.02em] text-brown text-[clamp(2.5rem,6vw,5rem)] max-w-[20ch]"
+        style="font-variation-settings: 'opsz' 144, 'SOFT' 25, 'wght' 700;"
+      >
+        Three programs. <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 600;">One mission.</span>
+      </h1>
+      <p class="prose-body mt-8 text-lg md:text-xl text-muted-brown max-w-[60ch]">
+        Every program is designed around a single constraint: books should reach the child, not the other way around.
+        We meet families where they already are: in hospitals, in classrooms, in the lobbies and waiting rooms
+        of daily life.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-6 pb-20 md:pb-28">
+    <div class="mx-auto max-w-[1100px]">
+      {programs.map((p, i) => {
+        const d = details[p.id as keyof typeof details];
+        const accentText = p.data.accentColor === "gold" ? "text-gold-text" : p.data.accentColor === "teal" ? "text-teal-text" : "text-red-text";
+        const accentBg = p.data.accentColor === "gold" ? "bg-gold" : p.data.accentColor === "teal" ? "bg-teal" : "bg-red-accent";
+        return (
+          <article class="grid gap-x-10 md:gap-x-16 md:grid-cols-[auto_1fr] border-t border-border-cream pt-16 pb-4 mt-16 first:mt-8">
+            <div class="flex items-start gap-4">
+              <span
+                class={`font-display italic leading-[0.85] text-6xl md:text-7xl ${accentText}`}
+                style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'wght' 500;"
+                aria-hidden="true"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span class={`hidden md:inline-block h-8 w-[3px] mt-4 ${accentBg}`} aria-hidden="true"></span>
+            </div>
+            <div>
+              <h2
+                class="font-display font-bold text-3xl md:text-4xl text-brown leading-tight"
+                style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
+              >
+                {p.data.name}
+              </h2>
+              <p class="prose-body mt-5 text-lg text-muted-brown max-w-[62ch]">{p.data.summary}</p>
+
+              <div class="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-3">
+                <div>
+                  <p class="label-mono text-gold-text">How it works</p>
+                  <p class="prose-body mt-3 text-base text-muted-brown">{d.how}</p>
+                </div>
+                <div>
+                  <p class="label-mono text-teal-text">Why it matters</p>
+                  <p class="prose-body mt-3 text-base text-muted-brown">{d.impact}</p>
+                </div>
+                <div>
+                  <p class="label-mono text-red-text">What we need</p>
+                  <p class="prose-body mt-3 text-base text-muted-brown">{d.need}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  <section class="relative bg-paper border-y border-border-cream">
+    <div class="mx-auto max-w-[1280px] px-6 py-20 md:py-28 grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+      <div class="relative">
+        <div class="absolute -inset-3 bg-gold/20 rounded-lg -rotate-1" aria-hidden="true"></div>
+        <Image
+          src={volunteersPhoto}
+          alt="Volunteers preparing books for a community drive"
+          widths={[480, 768, 1024]}
+          sizes="(min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
+          format="webp"
+          quality={82}
+          class="relative w-full rounded-lg shadow-xl object-cover aspect-[3/4]"
+        />
+      </div>
+      <div>
+        <div class="label-mono text-gold-text mb-6">
+          Built on Partnership
+        </div>
+        <h2
+          class="font-display font-bold leading-[1.05] tracking-[-0.015em] text-brown text-3xl md:text-4xl lg:text-5xl"
+          style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
+        >
+          We don't do this alone.
+        </h2>
+        <p class="prose-body mt-6 text-base md:text-lg text-muted-brown max-w-[56ch]">
+          None of this works without the partners who open the door: hospitals that let us into L&D units,
+          schools that invite us into classrooms, local businesses that put our bins in their lobbies.
+          Every program listed here is a collaboration, not a transaction.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="/partners" class="editorial-link label-mono text-brown hover:text-gold-text">See our partners →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaSection
+    eyebrow="Get Involved"
+    title="Pick a program. Move the needle."
+    subtitle="Donate to any of the three, or reach out about partnership."
+    ctaLabel="Get involved →"
+    ctaHref="/get-involved"
+  />
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  eyebrow?: string;
+  updated?: string;
+}
+
+const { title, description, eyebrow = "Legal", updated } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="px-6 pt-16 pb-12 md:pt-24 md:pb-16">
+    <div class="mx-auto max-w-[820px]">
+      <div class="label-mono flex items-center gap-3 text-muted-brown">
+        <span aria-hidden="true" class="inline-block h-px w-10 bg-current"></span>
+        <span>{eyebrow}</span>
+      </div>
+      <h1
+        class="mt-6 font-display font-bold leading-[1.05] tracking-[-0.02em] text-brown text-[clamp(2.25rem,5vw,4rem)]"
+        style="font-variation-settings: 'opsz' 144, 'SOFT' 25, 'wght' 700;"
+      >
+        {title}
+      </h1>
+      {updated && (
+        <p class="label-mono text-muted-brown mt-6">Last updated: {updated}</p>
+      )}
+    </div>
+  </section>
+
+  <section class="px-6 pb-24">
+    <div class="mx-auto max-w-[820px] prose-body text-base md:text-lg text-brown leading-relaxed [&>h2]:font-display [&>h2]:font-bold [&>h2]:text-2xl [&>h2]:md:text-3xl [&>h2]:text-brown [&>h2]:mt-12 [&>h2]:mb-4 [&>p]:mt-4 [&>p]:max-w-[64ch] [&>ul]:mt-4 [&>ul]:ml-6 [&>ul>li]:mt-2 [&>ul]:list-disc [&>a]:editorial-link">
+      <slot />
+    </div>
+  </section>
+</BaseLayout>

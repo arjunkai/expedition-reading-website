@@ -1,0 +1,178 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/Button.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import { SITE } from "@/lib/site";
+
+const tiers = [
+  { amount: "$20",  description: "Puts one book in a child's hands." },
+  { amount: "$50",  description: "Stocks a hospital bassinet-bag set." },
+  { amount: "$100", description: "Equips a classroom library shelf." },
+  { amount: "$500", description: "Underwrites an entire school's seasonal drive." },
+];
+---
+
+<BaseLayout
+  title="Get Involved"
+  description="Donate, volunteer, or host a book drive. Three ways to help place books in the hands of children who need them most."
+>
+  <section class="px-6 pt-16 pb-12 md:pt-24 md:pb-16">
+    <div class="mx-auto max-w-[1100px]">
+      <div class="label-mono flex items-center gap-3 text-gold-text">
+        <span aria-hidden="true" class="inline-block h-px w-10 bg-current"></span>
+        <span>Get Involved</span>
+      </div>
+      <h1
+        class="mt-6 font-display font-bold leading-[1] tracking-[-0.02em] text-brown text-[clamp(2.5rem,6vw,5rem)] max-w-[20ch]"
+        style="font-variation-settings: 'opsz' 144, 'SOFT' 25, 'wght' 700;"
+      >
+        Three ways to <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 600;">move the number</span>.
+      </h1>
+      <p class="prose-body mt-8 text-lg md:text-xl text-muted-brown max-w-[60ch]">
+        Give, show up, or open a door. Each one is worth more than the next one isn't.
+      </p>
+    </div>
+  </section>
+
+  {/* DONATE */}
+  <section id="donate" class="scroll-mt-24 bg-paper border-y border-border-cream px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-[1100px]">
+      <div class="grid gap-12 md:gap-16 md:grid-cols-[1fr_1.2fr] md:items-start">
+        <div>
+          <div class="label-mono text-gold-text mb-4">
+            01 · Donate
+          </div>
+          <h2
+            class="font-display font-bold text-3xl md:text-5xl text-brown leading-[1.05] tracking-[-0.015em]"
+            style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
+          >
+            Every gift is tax-deductible.
+          </h2>
+          <p class="prose-body mt-6 text-base md:text-lg text-muted-brown">
+            Donations are processed securely via PayPal. A receipt arrives in your inbox within minutes.
+            We're a 501(c)(3) nonprofit; your gift is deductible to the fullest extent allowed by law.
+          </p>
+          <div class="mt-10">
+            <Button variant="primary" href="https://www.paypal.com/donate">Donate via PayPal →</Button>
+          </div>
+        </div>
+        <div>
+          <div class="grid gap-5 sm:grid-cols-2">
+            {tiers.map((t) => (
+              <div class="rounded-lg border border-border-cream bg-cream p-6">
+                <div
+                  class="font-display font-bold text-3xl md:text-4xl text-gold-text tabular-nums leading-none"
+                  style="font-variation-settings: 'opsz' 144, 'SOFT' 15, 'wght' 700;"
+                >
+                  {t.amount}
+                </div>
+                <p class="prose-body mt-3 text-base text-brown">{t.description}</p>
+              </div>
+            ))}
+          </div>
+          <p class="mt-6 text-sm text-muted-brown">
+            Prefer to give books instead of funds? See the Host a Drive section below, or email us directly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* HOST A DRIVE */}
+  <section id="host" class="scroll-mt-24 px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-[1100px]">
+      <div class="grid gap-12 md:gap-16 md:grid-cols-[1.2fr_1fr] md:items-start">
+        <div>
+          <div class="label-mono text-teal-text mb-4">
+            02 · Host a Drive
+          </div>
+          <h2
+            class="font-display font-bold text-3xl md:text-5xl text-brown leading-[1.05] tracking-[-0.015em]"
+            style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
+          >
+            If you have a lobby, you can run one.
+          </h2>
+          <p class="prose-body mt-6 text-base md:text-lg text-muted-brown max-w-[58ch]">
+            We'll send you a donation bin, countertop signage, a collection target, and a pickup schedule.
+            Offices, faith communities, youth sports teams, coffee shops. Two weeks of quiet asks can yield
+            hundreds of books.
+          </p>
+          <p class="prose-body mt-4 text-base md:text-lg text-muted-brown max-w-[58ch]">
+            Email <a href={`mailto:${SITE.contactEmail}`} class="editorial-link">{SITE.contactEmail}</a> with your organization name, location, and a rough headcount,
+            and we'll send the toolkit within a few days.
+          </p>
+          <div class="mt-10">
+            <Button variant="secondary" href={`mailto:${SITE.contactEmail}?subject=Host%20a%20drive`}>Email to host a drive →</Button>
+          </div>
+        </div>
+        <div class="grid gap-4">
+          {["Sign up via email", "Receive toolkit & bin", "Collect for 2 weeks", "We pick up & sort", "Books reach kids"].map((step, i) => (
+            <div class="flex items-center gap-4 border-t border-border-cream pt-4">
+              <span class="label-mono text-muted-brown w-8">{String(i + 1).padStart(2, "0")}</span>
+              <span class="prose-body text-base text-brown">{step}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* VOLUNTEER */}
+  <section id="volunteer" class="scroll-mt-24 bg-paper border-y border-border-cream px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-[1100px]">
+      <div class="grid gap-12 md:gap-16 md:grid-cols-[1fr_1.2fr] md:items-start">
+        <div>
+          <div class="label-mono text-red-text mb-4">
+            03 · Volunteer
+          </div>
+          <h2
+            class="font-display font-bold text-3xl md:text-5xl text-brown leading-[1.05] tracking-[-0.015em]"
+            style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
+          >
+            Show up for an hour. Or a Saturday. Or a semester.
+          </h2>
+          <p class="prose-body mt-6 text-base md:text-lg text-muted-brown max-w-[58ch]">
+            Most of our volunteers help sort donations, assemble classroom kits, drive pickups, or staff
+            seasonal events. No long-term commitment required; we run this as a team and we'll meet you
+            where you are.
+          </p>
+          <div class="mt-10">
+            <Button variant="secondary" href={`mailto:${SITE.contactEmail}?subject=Volunteer`}>Email to volunteer →</Button>
+          </div>
+        </div>
+        <div>
+          <p class="label-mono text-gold-text mb-6">Ongoing needs</p>
+          <ul class="list-none m-0 p-0 grid gap-4">
+            {[
+              "Book sorting (weekday or weekend, Marietta)",
+              "Classroom kit assembly (seasonal, flexible)",
+              "Drive pickups (Saturdays, driver's license needed)",
+              "Event staffing (community fairs, school nights)",
+              "Social media & storytelling (remote-friendly)",
+            ].map((n) => (
+              <li class="flex items-start gap-3 border-t border-border-cream pt-4">
+                <span class="text-gold-text mt-1" aria-hidden="true">·</span>
+                <span class="prose-body text-base text-brown">{n}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-[820px] text-center">
+      <div class="label-mono text-gold-text mb-4">
+        Already in the Loop?
+      </div>
+      <p
+        class="font-display text-xl md:text-2xl text-brown leading-relaxed"
+        style="font-variation-settings: 'opsz' 24, 'SOFT' 50, 'wght' 500;"
+      >
+        If you're an existing partner or volunteer coordinator and just need to reach us quickly,
+        email <a href={`mailto:${SITE.contactEmail}`} class="editorial-link">{SITE.contactEmail}</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import LegalLayout from "@/layouts/LegalLayout.astro";
+import { SITE } from "@/lib/site";
+---
+
+<LegalLayout
+  title="Website Disclaimer"
+  description="Disclaimer regarding content and information on the Expedition Reading website."
+  updated="April 2026"
+>
+  <h2>Informational purposes only</h2>
+  <p>
+    The content on this website is for general informational purposes about Expedition Reading's mission,
+    programs, partners, and work. It is not intended as medical, legal, financial, or professional advice.
+  </p>
+
+  <h2>Accuracy</h2>
+  <p>
+    We make a good-faith effort to keep information on this site current and accurate. Impact statistics,
+    partner lists, and program details may shift between updates. If you are relying on a specific figure
+    for a grant application, press piece, or funding decision, please contact us directly for the most current numbers.
+  </p>
+
+  <h2>External links</h2>
+  <p>
+    Links to external sites are provided for convenience. We do not endorse and are not responsible for
+    the content or policies of linked sites, including third-party research cited in our materials.
+  </p>
+
+  <h2>Research citations</h2>
+  <p>
+    Where we cite statistics about early literacy and its lifetime impact, we rely on publicly available
+    research from sources including the National Center for Education Statistics, the Harvard Center on
+    the Developing Child, and published work by researchers including James Heckman. We encourage readers
+    to review the primary sources directly.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about this disclaimer or about information on the site can be sent to
+    <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
+  </p>
+</LegalLayout>

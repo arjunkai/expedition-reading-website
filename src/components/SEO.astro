@@ -13,7 +13,7 @@ const {
   canonical,
 } = Astro.props;
 
-const fullTitle = title === SITE.name ? SITE.name : `${title} — ${SITE.name}`;
+const fullTitle = title === SITE.name ? SITE.name : `${title} · ${SITE.name}`;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, SITE.url).toString();
 ---
 

@@ -1,0 +1,162 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import Button from "@/components/Button.astro";
+import CtaSection from "@/components/CtaSection.astro";
+import classroomPhoto from "@/assets/images/classroom.jpg";
+
+const team = (await getCollection("team")).sort((a, b) => a.data.order - b.data.order);
+
+const values = [
+  { name: "Access",      description: "We remove the barriers that keep books out of homes: cost, distance, inventory, language." },
+  { name: "Equity",      description: "We meet each child's needs without judgment, and we measure our work by who we're reaching, not who's easiest to reach." },
+  { name: "Joy",         description: "A book should feel like a gift, not a lesson. Every handoff carries warmth and wonder." },
+  { name: "Partnership", description: "We do this with hospitals, schools, and nonprofits, never around them. Trust compounds when it's shared." },
+  { name: "Future",      description: "Early literacy is an investment with a lifetime return. We work with that time horizon in mind." },
+  { name: "Stewardship", description: "We treat every donated dollar and every donated book as a responsibility. Transparent in numbers, careful in use." },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="Expedition Reading is a 501(c)(3) nonprofit founded in 2022 by a team of physicians and students working to place books in the hands of children from birth onward."
+>
+  <section class="relative px-6 pt-16 pb-20 md:pt-24 md:pb-24">
+    <div class="mx-auto max-w-[900px]">
+      <div class="label-mono flex items-center gap-3 text-gold-text">
+        <span aria-hidden="true" class="inline-block h-px w-10 bg-current"></span>
+        <span>About · Est. 2022</span>
+      </div>
+      <h1
+        class="mt-6 font-display font-bold leading-[1] tracking-[-0.02em] text-brown text-[clamp(2.5rem,6vw,5rem)]"
+        style="font-variation-settings: 'opsz' 144, 'SOFT' 25, 'wght' 700;"
+      >
+        Literacy is a form of <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 600;">care</span>.
+      </h1>
+      <p class="prose-body mt-8 text-lg md:text-xl text-muted-brown max-w-[60ch]">
+        Expedition Reading was born from a family-driven conviction: that the first book a child holds is as formative as the first well-child visit.
+        We're a 501(c)(3) nonprofit founded in 2022 by three physicians and three of their children. What started as book drives in waiting rooms
+        has grown into a partnership model that places books at the very start of a child's life, and keeps replenishing them through
+        kindergarten and beyond.
+      </p>
+    </div>
+  </section>
+
+  <section class="relative bg-paper border-y border-border-cream">
+    <div class="mx-auto max-w-[1280px] px-6 py-20 md:py-24 grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+      <div class="relative">
+        <div class="absolute -inset-3 bg-teal/15 rounded-lg rotate-1" aria-hidden="true"></div>
+        <Image
+          src={classroomPhoto}
+          alt="Books stocked on a partner classroom shelf"
+          widths={[480, 768, 1024]}
+          sizes="(min-width: 1024px) 560px, (min-width: 768px) 50vw, 100vw"
+          format="webp"
+          quality={82}
+          class="relative w-full rounded-lg shadow-xl object-cover aspect-[4/3]"
+        />
+      </div>
+      <div>
+        <div class="label-mono text-teal-text mb-6">
+          Our Why
+        </div>
+        <h2
+          class="font-display font-bold leading-[1.1] tracking-[-0.015em] text-brown text-3xl md:text-4xl"
+          style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
+        >
+          1 in 4. 90%. 7&ndash;10×.
+        </h2>
+        <p class="prose-body mt-6 text-base md:text-lg text-muted-brown">
+          One in four American children grows up without learning to read. Ninety percent of brain development happens before age five.
+          Every dollar spent on early literacy returns between seven and ten in lifetime earnings, health, and wellbeing.
+        </p>
+        <p class="prose-body mt-4 text-base md:text-lg text-muted-brown">
+          We're in the business of moving those numbers. One book, one child, one partner at a time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-[1100px]">
+      <SectionHeader
+        eyebrow="Our Values"
+        eyebrowColor="gold"
+        title="Six commitments that shape every decision."
+        align="center"
+      />
+      <div class="mt-16 grid gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+        {values.map((v, i) => (
+          <div class="border-t border-border-cream pt-6">
+            <div class="flex items-baseline gap-3">
+              <span
+                class="font-display italic text-gold-text text-2xl md:text-3xl leading-none"
+                style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'wght' 500;"
+                aria-hidden="true"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 class="font-display font-bold text-xl md:text-2xl text-brown">{v.name}</h3>
+            </div>
+            <p class="prose-body mt-4 text-base text-muted-brown">{v.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper border-y border-border-cream px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-[1100px]">
+      <SectionHeader
+        eyebrow="The Team"
+        eyebrowColor="teal"
+        title="Three physicians. Three students. One mission."
+        align="center"
+      />
+      <div class="mt-16 grid gap-x-12 gap-y-14 md:grid-cols-2">
+        {team.map((member) => (
+          <article class="border-t border-border-cream pt-8">
+            <h3
+              class="font-display font-bold text-2xl md:text-3xl text-brown leading-tight"
+              style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
+            >
+              {member.data.name}
+            </h3>
+            <p class="label-mono text-gold-text mt-2">{member.data.role}</p>
+            <p class="prose-body mt-5 text-base md:text-lg text-muted-brown max-w-[56ch]">
+              {member.data.bio}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-[820px] text-center">
+      <div class="label-mono text-gold-text mb-4">
+        Legal Status
+      </div>
+      <p
+        class="font-display text-xl md:text-2xl text-brown leading-relaxed"
+        style="font-variation-settings: 'opsz' 24, 'SOFT' 50, 'wght' 500;"
+      >
+        Expedition Reading is a 501(c)(3) nonprofit organization. Donations are tax-deductible to the fullest extent allowed by law.
+        Our EIN and audited financials are available on request.
+      </p>
+      <div class="mt-8">
+        <Button variant="secondary" href="/contact">Request financials</Button>
+      </div>
+    </div>
+  </section>
+
+  <CtaSection
+    eyebrow="Join Us"
+    title="Be the reason a book lands in a child's hands."
+    subtitle="Donate, volunteer, or host a drive. Every single one moves the number."
+    ctaLabel="Get involved →"
+    ctaHref="/get-involved"
+  />
+</BaseLayout>

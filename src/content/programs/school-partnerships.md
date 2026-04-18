@@ -5,4 +5,4 @@ accentColor: teal
 order: 2
 ---
 
-Through partnerships with Marietta City Schools and others, we stock classroom libraries and send books home with students — especially over summer and winter breaks when reading gaps widen.
+Through partnerships with Marietta City Schools and others, we stock classroom libraries and send books home with students, especially over summer and winter breaks when reading gaps widen.

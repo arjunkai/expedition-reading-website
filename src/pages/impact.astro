@@ -1,0 +1,146 @@
+---
+import { getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import StatBlock from "@/components/StatBlock.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import CtaSection from "@/components/CtaSection.astro";
+
+const statsEntry = await getEntry("stats", "current");
+if (!statsEntry) throw new Error("stats:current content missing");
+const stats = statsEntry.data;
+
+const stories = [
+  {
+    label: "Hospital Partnership",
+    headline: "A book in every going-home bag.",
+    body: "Through our hospital partnerships, newborns leave with a board book tucked next to the discharge paperwork. It's the first signal to a family that books are part of this child's life from day one.",
+  },
+  {
+    label: "Classroom Library",
+    headline: "Stocked shelves, mid-winter.",
+    body: "In December, we refilled classroom libraries across five Title I schools so teachers had fresh, age-appropriate inventory to send home with students before the break. No gap-widening January.",
+  },
+  {
+    label: "Community Drive",
+    headline: "A coffee shop collected 400 books in two weeks.",
+    body: "One host, one bin, one counter-top sign. That's all it takes, and it adds up faster than most people expect. This drive put books in three classroom libraries by the following month.",
+  },
+];
+
+const breakdown = [
+  { label: "Books placed in hospital bassinet bags", value: "1,800+", color: "gold"  as const },
+  { label: "Classroom library books stocked", value: "2,400+", color: "teal"  as const },
+  { label: "Books distributed via community drives", value: "800+", color: "brown" as const },
+];
+---
+
+<BaseLayout
+  title="Impact"
+  description="5,000+ books delivered, 20+ schools and communities reached, 200+ volunteer hours — plus the stories behind the numbers."
+>
+  <section class="px-6 pt-16 pb-12 md:pt-24 md:pb-16">
+    <div class="mx-auto max-w-[1100px]">
+      <div class="label-mono flex items-center gap-3 text-teal-text">
+        <span aria-hidden="true" class="inline-block h-px w-10 bg-current"></span>
+        <span>Our Impact · As of {stats.asOf.slice(0, 4)}</span>
+      </div>
+      <h1
+        class="mt-6 font-display font-bold leading-[1] tracking-[-0.02em] text-brown text-[clamp(2.5rem,6vw,5rem)] max-w-[20ch]"
+        style="font-variation-settings: 'opsz' 144, 'SOFT' 25, 'wght' 700;"
+      >
+        The numbers and the <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 600;">stories</span> behind them.
+      </h1>
+      <p class="prose-body mt-8 text-lg md:text-xl text-muted-brown max-w-[60ch]">
+        Every number on this page is a specific handoff — a specific book to a specific child.
+        We report in totals because that's what rolls up cleanly; we remember in moments.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-paper border-y border-border-cream">
+    <div class="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-6">
+        <div class="md:border-r md:border-border-cream md:pr-6">
+          <StatBlock value={`${stats.booksDelivered.toLocaleString()}+`} label="Books delivered" color="gold" />
+        </div>
+        <div class="md:border-r md:border-border-cream md:pr-6">
+          <StatBlock value={`${stats.schools}+`} label="Schools & communities reached" color="teal" />
+        </div>
+        <div>
+          <StatBlock value={`${stats.volunteerHours}+`} label="Volunteer hours" color="brown" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-[1100px]">
+      <SectionHeader
+        eyebrow="Where the Books Went"
+        eyebrowColor="gold"
+        title="A breakdown by program."
+        align="center"
+      />
+      <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
+        {breakdown.map((b, i) => (
+          <div class={i < breakdown.length - 1 ? "md:border-r md:border-border-cream md:pr-6" : ""}>
+            <StatBlock value={b.value} label={b.label} color={b.color} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper border-y border-border-cream px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-[1100px]">
+      <SectionHeader
+        eyebrow="Stories"
+        eyebrowColor="teal"
+        title="Three moments from this year."
+        align="center"
+      />
+      <div class="mt-16 grid gap-12 md:grid-cols-3">
+        {stories.map((s) => (
+          <article class="border-t border-border-cream pt-8">
+            <p class="label-mono text-gold-text">{s.label}</p>
+            <h3
+              class="font-display font-bold text-xl md:text-2xl text-brown mt-4 leading-tight"
+              style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
+            >
+              {s.headline}
+            </h3>
+            <p class="prose-body mt-5 text-base text-muted-brown">{s.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-20 md:py-24">
+    <div class="mx-auto max-w-[820px] text-center">
+      <div class="label-mono text-gold-text mb-4">
+        Transparency
+      </div>
+      <p
+        class="font-display text-xl md:text-2xl text-brown leading-relaxed"
+        style="font-variation-settings: 'opsz' 24, 'SOFT' 50, 'wght' 500;"
+      >
+        Our financials are audited annually. Detailed program breakdowns and year-over-year comparisons
+        are available on request for donors, grant reviewers, and institutional partners.
+      </p>
+      <div class="mt-8">
+        <a href="/contact" class="editorial-link label-mono text-brown hover:text-gold-text">
+          Request an impact report →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CtaSection
+    eyebrow="Multiply the Impact"
+    title="Every book is one more number on this page."
+    subtitle="$20 puts one in a child's hands. $100 stocks a classroom shelf. Every gift is tax-deductible."
+    ctaLabel="Donate now →"
+    ctaHref="/get-involved#donate"
+  />
+</BaseLayout>
