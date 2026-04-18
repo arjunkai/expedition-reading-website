@@ -481,16 +481,15 @@ const stats = defineCollection({
   }),
 });
 
+// Per-entry schema (Astro's file() loader applies the schema to each entry, not the array).
 const values = defineCollection({
   loader: file("src/content/values/values.json"),
-  schema: z.array(
-    z.object({
-      id: z.string(),
-      name: z.string(),
-      description: z.string(),
-      order: z.number().int(),
-    }),
-  ),
+  schema: z.object({
+    id: z.string(),
+    name: z.string(),
+    description: z.string(),
+    order: z.number().int(),
+  }),
 });
 
 const programs = defineCollection({
@@ -527,16 +526,18 @@ const partners = defineCollection({
 export const collections = { stats, values, programs, team, partners };
 ```
 
-- [ ] **Step 2: Seed `src/content/stats.json`**
+- [ ] **Step 2: Seed `src/content/stats.json`** (wrapped in an array — Astro's `file()` loader treats each array element as one entry)
 
 ```json
-{
-  "id": "current",
-  "booksDelivered": 5000,
-  "schools": 20,
-  "volunteerHours": 200,
-  "asOf": "2026-04-18"
-}
+[
+  {
+    "id": "current",
+    "booksDelivered": 5000,
+    "schools": 20,
+    "volunteerHours": 200,
+    "asOf": "2026-04-18"
+  }
+]
 ```
 
 - [ ] **Step 3: Seed `src/content/values/values.json`**
