@@ -1,0 +1,20 @@
+---
+interface Props {
+  name: string;
+  summary: string;
+  accentColor: "gold" | "teal" | "red";
+}
+
+const { name, summary, accentColor } = Astro.props;
+
+const BORDER_COLOR: Record<Props["accentColor"], string> = {
+  gold: "border-t-gold",
+  teal: "border-t-teal",
+  red: "border-t-[#C23F35]",
+};
+---
+
+<article class={`rounded-lg bg-cream p-6 border-t-[3px] ${BORDER_COLOR[accentColor]}`}>
+  <h3 class="text-lg font-bold text-brown">{name}</h3>
+  <p class="mt-2 text-sm leading-relaxed text-muted-brown font-serif">{summary}</p>
+</article>
