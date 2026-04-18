@@ -1,0 +1,30 @@
+---
+import { SITE } from "@/lib/site";
+import Button from "./Button.astro";
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => pathname === href || pathname === `${href}/`;
+---
+
+<header class="border-b border-border-cream bg-cream">
+  <nav class="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-5" aria-label="Primary">
+    <a href="/" class="flex items-center gap-2 font-semibold text-brown no-underline">
+      <span class="flex h-9 w-9 items-center justify-center rounded-md bg-gold font-bold text-brown">ER</span>
+      <span class="hidden sm:inline text-[15px] tracking-[0.02em]">{SITE.name}</span>
+    </a>
+    <ul class="hidden items-center gap-6 md:flex text-sm text-brown list-none m-0 p-0">
+      {SITE.nav.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class={`no-underline hover:underline ${isActive(item.href) ? "font-semibold" : ""}`}
+            aria-current={isActive(item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <Button href="/get-involved#donate" variant="primary">Donate</Button>
+  </nav>
+</header>
