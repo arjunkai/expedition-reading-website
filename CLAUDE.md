@@ -4,26 +4,48 @@ Rebuild of https://expeditionreading.org from scratch. Nonprofit (501(c)(3)) fou
 
 ## Status
 
-**Phase:** Brainstorming → spec → plan → implementation. No code yet.
+**Phase:** Phase 1 local build complete — ready to push to GitHub & deploy to Cloudflare Pages.
+**Next steps:** Task 14 (create GitHub repo) + Task 15 (Cloudflare Pages setup). Both are user-assisted — see plan at `docs/superpowers/plans/2026-04-18-phase-1-foundation-and-home.md`.
+**Staging URL:** _(set after Task 15)_
 
-When the spec lands at `docs/superpowers/specs/`, update this file's Status and Tech Stack sections to reflect final decisions.
+Phase 1 delivers: working home page (bg-cream, gold/teal/brown editorial palette, all content from Content Collections), Playwright + axe e2e tests passing, GitHub Actions CI green locally, WCAG AA contrast compliant.
 
-## Tech Stack (planned, not yet implemented)
+## Tech Stack (locked, implemented)
 
-- **Framework:** Astro + TypeScript + Tailwind CSS
-- **Hosting:** Cloudflare Pages (static) + Cloudflare Web Analytics + Cloudflare Pages Forms
-- **CMS:** None — content lives in `src/content/` as Markdown, edited via GitHub web UI
-- **Donations:** PayPal (existing, keep it)
-- **DNS:** Cloudflare (nameservers moved from current host)
+- **Framework:** Astro 5.18.1 + TypeScript (strict) + Tailwind CSS v4
+- **Hosting:** Cloudflare Pages (static) — via `public/_headers` for security headers
+- **Content:** Astro Content Collections (Zod-validated) under `src/content/`
+- **Fonts:** Self-hosted Fraunces (serif, headings) + Inter (sans, UI) via `@fontsource`
+- **Testing:** Vitest (unit) + Playwright + `@axe-core/playwright` (e2e + a11y)
+- **CI:** GitHub Actions (`.github/workflows/ci.yml`) — runs type check, unit, e2e + axe
+- **Deploy:** Cloudflare Pages, auto-deploys from `main`
+- **Donations:** PayPal (existing, linked from `/get-involved#donate`)
+- **DNS:** Cloudflare (to be configured in Phase 3 cutover)
+
+## Commands
+
+```bash
+npm run dev          # http://localhost:4321 with HMR
+npm run build        # static output to dist/
+npm run preview      # serve dist/ at localhost:4321
+npm run check        # astro check + tsc --noEmit
+npm test             # Vitest unit tests
+npm run test:e2e     # Playwright + axe (requires prior build)
+npm run test:e2e:install   # install Playwright Chromium (one-time)
+```
 
 ## Brand (locked)
 
 - **Palette:** "Warm Editorial" direction — derived from logo
-  - Gold primary: `#E8A93B`
-  - Teal secondary: `#2A9D8F`
+  - Gold primary: `#E8A93B` (buttons, accents, dark-bg text)
+  - Teal secondary: `#2A9D8F` (accents, dark-bg text)
   - Dark brown (text / nav / dark sections): `#2B1D14`
   - Cream background: `#FAF6EC`
   - White for content sections: `#FFFFFF`
+- **Accessibility-safe text variants** (WCAG AA on light backgrounds):
+  - `text-gold-text` = `#8A5F1C` (5.55:1 on white) — use for text on white/cream
+  - `text-teal-text` = `#1E7265` (4.79:1 on white) — use for text on white/cream
+  - The bright brand gold/teal remain for buttons, dark sections, and decorative fills only
 - **Typography:** Serif headings (Georgia-family or similar), sans for UI/navigation
 - **Voice:** Warm but credible — grown-up nonprofit, not corporate, not cutesy
 
