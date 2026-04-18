@@ -42,3 +42,7 @@ yarn-error.log*
 test-results/
 playwright-report/
 playwright/.cache/
+
+# Python caches (from .claude/skills/ui-ux-pro-max scripts)
+__pycache__/
+*.pyc

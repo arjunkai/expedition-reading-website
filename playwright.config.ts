@@ -9,6 +9,10 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:4321",
     trace: "retain-on-failure",
+    // Disable CSS animations so axe contrast checks don't race against
+    // opacity fade-ins (our global.css already hides animations under
+    // prefers-reduced-motion: reduce).
+    reducedMotion: "reduce",
   },
   projects: [
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },

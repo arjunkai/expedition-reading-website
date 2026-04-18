@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Button from "@/components/Button.astro";
@@ -6,6 +7,7 @@ import StatBlock from "@/components/StatBlock.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
 import ProgramCard from "@/components/ProgramCard.astro";
 import CtaSection from "@/components/CtaSection.astro";
+import heroPhoto from "@/assets/images/book-drive.jpg";
 
 const statsEntry = await getEntry("stats", "current");
 if (!statsEntry) throw new Error("stats:current content missing");
@@ -29,9 +31,9 @@ const partners = [
   description="A 501(c)(3) nonprofit placing books into the hands of children from birth onward, in partnership with hospitals, schools, and community organizations."
 >
   {/* ══════════════ HERO ══════════════ */}
-  <section class="relative px-6 pt-16 pb-24 md:pt-24 md:pb-32">
+  <section class="relative px-6 pt-12 pb-20 md:pt-20 md:pb-28">
     <div class="mx-auto max-w-[1280px]">
-      <div class="grid gap-12 md:gap-16 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+      <div class="grid gap-12 md:gap-16 lg:grid-cols-[1.1fr_1fr] lg:items-center">
 
         <div class="animate-rise">
           <div class="label-mono flex items-center gap-3 text-gold-text">
@@ -61,14 +63,15 @@ const partners = [
         <div class="relative animate-rise animate-rise-2">
           <div class="absolute -inset-3 bg-gold/20 rounded-lg rotate-1" aria-hidden="true"></div>
           <div class="absolute -inset-1 bg-teal/15 rounded-lg -rotate-1" aria-hidden="true"></div>
-          <img
-            src="/images/book-drive.jpg"
+          <Image
+            src={heroPhoto}
             alt="Expedition Reading volunteers distributing books at a community drive"
-            class="relative w-full rounded-lg shadow-xl object-cover aspect-[4/3]"
+            widths={[480, 768, 1024, 1280]}
+            sizes="(min-width: 1024px) 560px, (min-width: 768px) 50vw, 100vw"
+            format="webp"
+            quality={82}
             loading="eager"
-            decoding="async"
-            width="1600"
-            height="1200"
+            class="relative w-full rounded-lg shadow-xl object-cover aspect-[4/3]"
           />
           <div class="absolute -bottom-6 -left-6 max-w-[260px] bg-cream border border-border-cream rounded-md px-5 py-4 shadow-lg hidden md:block">
             <p class="label-mono text-gold-text">On mission</p>
@@ -129,10 +132,17 @@ const partners = [
   <section class="relative bg-paper border-y border-border-cream overflow-hidden">
     <div
       aria-hidden="true"
-      class="pointer-events-none absolute top-6 left-6 md:left-16 font-display italic text-gold/30 text-[12rem] md:text-[18rem] leading-none select-none"
+      class="pointer-events-none absolute top-4 left-6 md:left-16 font-display italic text-gold/25 text-[10rem] md:text-[16rem] leading-none select-none"
       style="font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 500;"
     >
       &ldquo;
+    </div>
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute bottom-0 right-6 md:right-16 font-display italic text-gold/25 text-[10rem] md:text-[16rem] leading-none select-none"
+      style="font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 500;"
+    >
+      &rdquo;
     </div>
 
     <div class="relative mx-auto max-w-[900px] px-6 py-24 md:py-32 text-center">
