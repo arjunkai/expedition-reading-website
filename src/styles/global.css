@@ -19,6 +19,13 @@
   --color-red-accent: #C23F35;
   --color-sky-accent: #4FA3D1;
 
+  /* Accessibility-safe text variants of the brand accents.
+     Use *-text on light backgrounds (white/cream). The bright brand
+     variants (gold/teal) fail WCAG AA on light backgrounds; they are
+     reserved for dark backgrounds (brown sections) and decorative fills. */
+  --color-gold-text: #8A5F1C;   /* 5.55:1 on white, passes AA */
+  --color-teal-text: #1E7265;   /* 4.79:1 on white, passes AA */
+
   /* Typography */
   --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
