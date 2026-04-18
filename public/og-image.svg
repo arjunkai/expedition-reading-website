@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Cream background -->
+  <rect width="1200" height="630" fill="#FAF6EC"/>
+
+  <!-- Warm gradient tint -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FAF6EC"/>
+      <stop offset="1" stop-color="#F3E9CE"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E8A93B" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#E8A93B" stop-opacity="1"/>
+      <stop offset="1" stop-color="#E8A93B" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Gold rounded tile with ER -->
+  <rect x="80" y="80" width="110" height="110" rx="20" fill="#E8A93B"/>
+  <text x="135" y="163" font-family="Georgia, 'Times New Roman', serif" font-size="64" font-weight="700"
+        text-anchor="middle" fill="#2B1D14" letter-spacing="-1">ER</text>
+
+  <!-- Mono eyebrow -->
+  <text x="220" y="140" font-family="'SFMono-Regular', Menlo, monospace" font-size="18"
+        letter-spacing="4" fill="#8A5F1C" font-weight="500">
+    A 501(c)(3) NONPROFIT · EST. 2022
+  </text>
+
+  <!-- Tiny gold rule under eyebrow -->
+  <line x1="220" y1="162" x2="280" y2="162" stroke="#E8A93B" stroke-width="2"/>
+
+  <!-- Main headline -->
+  <text x="80" y="340" font-family="Georgia, 'Times New Roman', serif" font-size="88" font-weight="700"
+        fill="#2B1D14" letter-spacing="-2">
+    Every child deserves
+  </text>
+  <text x="80" y="435" font-family="Georgia, 'Times New Roman', serif" font-size="88" font-weight="700"
+        font-style="italic" fill="#2B1D14" letter-spacing="-2">
+    a chance to learn.
+  </text>
+
+  <!-- Subhead -->
+  <text x="80" y="500" font-family="Georgia, 'Times New Roman', serif" font-size="28"
+        fill="#5B4B3E">
+    Books in the hands of children, from birth onward.
+  </text>
+
+  <!-- Bottom rule -->
+  <rect x="80" y="555" width="1040" height="2" fill="url(#rule)"/>
+
+  <!-- Bottom row: brand + URL -->
+  <text x="80" y="595" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="700"
+        fill="#2B1D14">Expedition Reading</text>
+  <text x="1120" y="595" font-family="'SFMono-Regular', Menlo, monospace" font-size="16"
+        letter-spacing="3" fill="#8A5F1C" text-anchor="end">expeditionreading.org</text>
+</svg>

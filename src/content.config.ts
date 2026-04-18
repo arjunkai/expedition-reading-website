@@ -48,9 +48,11 @@ const partners = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/partners" }),
   schema: z.object({
     name: z.string(),
-    url: z.string().url().optional(),
     blurb: z.string(),
     order: z.number().int(),
+    website: z.string().url().optional(),
+    instagram: z.string().url().optional(),
+    facebook: z.string().url().optional(),
   }),
 });
 

@@ -5,16 +5,37 @@ interface Props {
   title?: string;
   description?: string;
   canonical?: string;
+  ogImage?: string;
+  includeOrgSchema?: boolean;
 }
 
 const {
   title = SITE.name,
   description = SITE.description,
   canonical,
+  ogImage = "/og-image.png",
+  includeOrgSchema = false,
 } = Astro.props;
 
 const fullTitle = title === SITE.name ? SITE.name : `${title} · ${SITE.name}`;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, SITE.url).toString();
+const ogImageUrl = new URL(ogImage, SITE.url).toString();
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  name: SITE.name,
+  alternateName: "Expedition Reading, Inc.",
+  url: SITE.url,
+  logo: new URL("/logo.svg", SITE.url).toString(),
+  description: SITE.description,
+  foundingDate: "2022",
+  slogan: SITE.tagline,
+  sameAs: [SITE.socials.instagram],
+  email: SITE.contactEmail,
+  nonprofitStatus: "501(c)(3)",
+  areaServed: { "@type": "AdministrativeArea", name: "United States" },
+};
 ---
 
 <title>{fullTitle}</title>
@@ -26,7 +47,16 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, SITE.url).toString
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content={SITE.name} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={`${SITE.name} — ${SITE.tagline}`} />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+{includeOrgSchema && (
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(organizationSchema)} />
+)}

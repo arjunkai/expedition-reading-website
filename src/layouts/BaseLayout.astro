@@ -7,9 +7,10 @@ import Footer from "@/components/Footer.astro";
 interface Props {
   title?: string;
   description?: string;
+  includeOrgSchema?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, includeOrgSchema = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,7 +21,7 @@ const { title, description } = Astro.props;
     <meta name="theme-color" content="#FAF6EC" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
-    <SEO title={title} description={description} />
+    <SEO title={title} description={description} includeOrgSchema={includeOrgSchema} />
   </head>
   <body class="bg-cream text-brown">
     <a href="#main" class="skip-link">Skip to main content</a>

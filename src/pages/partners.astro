@@ -64,6 +64,28 @@ const types = [
               <p class="prose-body mt-4 text-base md:text-lg text-muted-brown max-w-[62ch]">
                 {p.data.blurb}
               </p>
+              {(p.data.website || p.data.instagram || p.data.facebook) && (
+                <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+                  {p.data.website && (
+                    <a href={p.data.website} rel="noopener noreferrer" target="_blank"
+                       class="label-mono text-brown hover:text-gold-text transition-colors">
+                      Website →
+                    </a>
+                  )}
+                  {p.data.instagram && (
+                    <a href={p.data.instagram} rel="noopener noreferrer" target="_blank"
+                       class="label-mono text-brown hover:text-gold-text transition-colors">
+                      Instagram →
+                    </a>
+                  )}
+                  {p.data.facebook && (
+                    <a href={p.data.facebook} rel="noopener noreferrer" target="_blank"
+                       class="label-mono text-brown hover:text-gold-text transition-colors">
+                      Facebook →
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           </article>
         ))}
