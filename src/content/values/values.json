@@ -1,0 +1,8 @@
+[
+  { "id": "access", "name": "Access", "description": "Remove barriers to reading in underserved areas.", "order": 1 },
+  { "id": "equity", "name": "Equity", "description": "Meet each child's unique needs fairly.", "order": 2 },
+  { "id": "joy", "name": "Joy", "description": "Foster warmth and wonder around reading.", "order": 3 },
+  { "id": "partnership", "name": "Partnership", "description": "Collaborate with nonprofits, schools, and hospitals.", "order": 4 },
+  { "id": "future", "name": "Future", "description": "Invest in the lifelong benefits of literacy.", "order": 5 },
+  { "id": "stewardship", "name": "Stewardship", "description": "Use our resources responsibly and efficiently.", "order": 6 }
+]

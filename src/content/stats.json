@@ -1,0 +1,9 @@
+[
+  {
+    "id": "current",
+    "booksDelivered": 5000,
+    "schools": 20,
+    "volunteerHours": 200,
+    "asOf": "2026-04-18"
+  }
+]
