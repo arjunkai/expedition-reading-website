@@ -1,7 +1,112 @@
 ---
-import "@/styles/global.css";
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/Button.astro";
+import StatBlock from "@/components/StatBlock.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import ProgramCard from "@/components/ProgramCard.astro";
+import CtaSection from "@/components/CtaSection.astro";
+
+const statsEntry = await getEntry("stats", "current");
+if (!statsEntry) throw new Error("stats:current content missing");
+const stats = statsEntry.data;
+
+const programs = (await getCollection("programs")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const partners = [
+  "Book Nook Marietta",
+  "Helping Mamas",
+  "Marietta City Schools",
+  "Moxie Burger",
+  "Creating Space",
+];
 ---
-<html lang="en">
-  <head><meta charset="utf-8" /><title>Expedition Reading</title></head>
-  <body><h1>Expedition Reading</h1></body>
-</html>
+
+<BaseLayout
+  title="Expedition Reading"
+  description="A 501(c)(3) nonprofit placing books into the hands of children from birth onward, in partnership with hospitals, schools, and community organizations."
+>
+  {/* HERO */}
+  <section class="bg-gradient-to-b from-cream to-[#F5EEDC] px-6 py-16 md:py-24">
+    <div class="mx-auto grid max-w-[1200px] gap-10 md:grid-cols-[1.15fr_1fr] md:items-center">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#6B4B2E]">
+          A 501(c)(3) Nonprofit · Atlanta, GA
+        </p>
+        <h1 class="mt-4 text-4xl md:text-5xl font-bold leading-[1.05] text-brown">
+          Every child deserves a chance to learn.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted-brown font-serif">
+          We place books into the hands of children who need them most — from hospital bassinets to classrooms, from birth onward.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button variant="primary" href="/get-involved#donate">Donate books &amp; funds →</Button>
+          <Button variant="secondary" href="/partners">Partner with us</Button>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="aspect-[4/3] w-full rounded-xl bg-[#D9D0B8] flex items-center justify-center text-[#8A7A5E] italic text-sm">
+          <span>Photo: kids reading / book drive</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* IMPACT STATS */}
+  <section class="bg-paper border-t border-border-cream px-6 py-16">
+    <div class="mx-auto max-w-[1200px]">
+      <p class="text-center text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+        Our Impact So Far
+      </p>
+      <div class="mx-auto mt-8 grid max-w-[800px] grid-cols-1 gap-10 sm:grid-cols-3">
+        <StatBlock value={`${stats.booksDelivered.toLocaleString()}+`} label="books delivered" color="gold" />
+        <StatBlock value={`${stats.schools}+`} label="schools & communities" color="teal" />
+        <StatBlock value={`${stats.volunteerHours}+`} label="volunteer hours" color="brown" />
+      </div>
+    </div>
+  </section>
+
+  {/* WHY EARLY LITERACY */}
+  <section class="bg-cream px-6 py-16">
+    <SectionHeader
+      eyebrow="Why Early Literacy"
+      title="Reading changes everything — and it starts earlier than you think."
+      description="1 in 4 children in the U.S. grow up without learning to read. 90% of brain development happens before age 5. Early literacy interventions return 7–10× their cost in lifetime outcomes."
+    />
+  </section>
+
+  {/* WHAT WE DO */}
+  <section class="bg-paper border-t border-border-cream px-6 py-16">
+    <div class="mx-auto max-w-[1200px]">
+      <SectionHeader
+        eyebrow="What We Do"
+        title="Three programs, one mission"
+      />
+      <div class="mt-10 grid gap-5 md:grid-cols-3">
+        {programs.map((p) => (
+          <ProgramCard name={p.data.name} summary={p.data.summary} accentColor={p.data.accentColor} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* PARTNERS */}
+  <section class="bg-cream px-6 py-10 text-center">
+    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#6B4B2E]">
+      Trusted Partners
+    </p>
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-muted-brown font-serif italic opacity-70">
+      {partners.map((p) => <span>{p}</span>)}
+    </div>
+  </section>
+
+  {/* FINAL CTA */}
+  <CtaSection
+    title="One book opens a lifetime."
+    subtitle="$20 puts a book in a child's hands. $100 equips a classroom shelf."
+    ctaLabel="Donate now →"
+    ctaHref="/get-involved#donate"
+  />
+</BaseLayout>
