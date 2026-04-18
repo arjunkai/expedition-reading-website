@@ -1,0 +1,84 @@
+@import "tailwindcss";
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/fraunces/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+
+@theme {
+  /* Palette — "Warm Editorial" from the spec */
+  --color-gold: #E8A93B;
+  --color-teal: #2A9D8F;
+  --color-brown: #2B1D14;
+  --color-cream: #FAF6EC;
+  --color-paper: #FFFFFF;
+  --color-muted-brown: #5B4B3E;
+  --color-border-cream: #E8DDC5;
+  --color-red-accent: #C23F35;
+  --color-sky-accent: #4FA3D1;
+
+  /* Typography */
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Type scale (from spec) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+  --text-5xl: 4rem;
+
+  /* Spacing (from spec) */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-10: 2.5rem;
+  --spacing-16: 4rem;
+  --spacing-24: 6rem;
+
+  /* Radius */
+  --radius-card: 0.5rem;
+  --radius-pill: 999px;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-brown);
+    background: var(--color-cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--color-brown);
+    line-height: 1.15;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brown);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--color-brown);
+    color: var(--color-cream);
+    padding: 0.75rem 1rem;
+    z-index: 100;
+  }
+  .skip-link:focus {
+    left: 0;
+  }
+}
