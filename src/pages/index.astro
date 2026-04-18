@@ -7,7 +7,7 @@ import StatBlock from "@/components/StatBlock.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
 import ProgramCard from "@/components/ProgramCard.astro";
 import CtaSection from "@/components/CtaSection.astro";
-import heroPhoto from "@/assets/images/book-drive.jpg";
+import heroPhoto from "@/assets/images/hero-moxie-group.jpg";
 
 const statsEntry = await getEntry("stats", "current");
 if (!statsEntry) throw new Error("stats:current content missing");
@@ -65,13 +65,13 @@ const partners = [
           <div class="absolute -inset-1 bg-teal/15 rounded-lg -rotate-1" aria-hidden="true"></div>
           <Image
             src={heroPhoto}
-            alt="Expedition Reading volunteers distributing books at a community drive"
+            alt="The Expedition Reading team with children holding books beside a donation bin at partner Moxie Burger"
             widths={[480, 768, 1024, 1280]}
-            sizes="(min-width: 1024px) 560px, (min-width: 768px) 50vw, 100vw"
+            sizes="(min-width: 1024px) 520px, (min-width: 768px) 50vw, 100vw"
             format="webp"
             quality={82}
             loading="eager"
-            class="relative w-full rounded-lg shadow-xl object-cover aspect-[4/3]"
+            class="relative w-full rounded-lg shadow-xl object-cover aspect-[4/5] object-[center_40%]"
           />
           <div class="absolute -bottom-6 -left-6 max-w-[260px] bg-cream border border-border-cream rounded-md px-5 py-4 shadow-lg hidden md:block">
             <p class="label-mono text-gold-text">On mission</p>

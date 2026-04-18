@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
 import CtaSection from "@/components/CtaSection.astro";
-import volunteersPhoto from "@/assets/images/volunteers-portrait.jpg";
+import partnershipPhoto from "@/assets/images/moxie-handoff.jpg";
 
 const programs = (await getCollection("programs")).sort((a, b) => a.data.order - b.data.order);
 
@@ -104,13 +104,13 @@ const details = {
       <div class="relative">
         <div class="absolute -inset-3 bg-gold/20 rounded-lg -rotate-1" aria-hidden="true"></div>
         <Image
-          src={volunteersPhoto}
-          alt="Volunteers preparing books for a community drive"
+          src={partnershipPhoto}
+          alt="Expedition Reading handing off a donation bin at partner Moxie Burger"
           widths={[480, 768, 1024]}
           sizes="(min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
           format="webp"
           quality={82}
-          class="relative w-full rounded-lg shadow-xl object-cover aspect-[3/4]"
+          class="relative w-full rounded-lg shadow-xl object-cover aspect-[4/5] object-[center_40%]"
         />
       </div>
       <div>
