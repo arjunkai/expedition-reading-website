@@ -6,15 +6,44 @@ interface Props {
   subtitle?: string;
   ctaLabel: string;
   ctaHref: string;
+  eyebrow?: string;
 }
 
-const { title, subtitle, ctaLabel, ctaHref } = Astro.props;
+const { title, subtitle, ctaLabel, ctaHref, eyebrow } = Astro.props;
 ---
 
-<section class="bg-brown text-cream py-16 px-6 text-center">
-  <h2 class="text-2xl md:text-3xl font-bold text-cream">{title}</h2>
-  {subtitle && <p class="mx-auto mt-3 max-w-xl text-base font-serif text-cream/80">{subtitle}</p>}
-  <div class="mt-8">
-    <Button variant="primary" href={ctaHref}>{ctaLabel}</Button>
+<section class="relative overflow-hidden bg-brown text-cream px-6 py-24 md:py-32">
+  {/* Decorative off-screen gold crescent */}
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -top-32 -right-32 h-[400px] w-[400px] rounded-full bg-gold/10 blur-3xl"
+  ></div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -bottom-40 -left-40 h-[500px] w-[500px] rounded-full bg-teal/10 blur-3xl"
+  ></div>
+
+  <div class="relative mx-auto max-w-[900px] text-center">
+    {eyebrow && (
+      <div class="label-mono flex items-center justify-center gap-3 text-gold mb-8">
+        <span aria-hidden="true" class="inline-block h-px w-8 bg-current"></span>
+        <span>{eyebrow}</span>
+        <span aria-hidden="true" class="inline-block h-px w-8 bg-current"></span>
+      </div>
+    )}
+    <h2
+      class="font-display font-bold leading-[0.95] tracking-tight text-4xl md:text-6xl lg:text-7xl text-cream"
+      style="font-variation-settings: 'opsz' 144, 'SOFT' 35, 'wght' 700;"
+    >
+      {title}
+    </h2>
+    {subtitle && (
+      <p class="prose-body mx-auto mt-8 max-w-[560px] text-lg md:text-xl text-cream/80">
+        {subtitle}
+      </p>
+    )}
+    <div class="mt-12">
+      <Button variant="primary" href={ctaHref}>{ctaLabel}</Button>
+    </div>
   </div>
 </section>

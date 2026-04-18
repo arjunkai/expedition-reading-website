@@ -3,18 +3,40 @@ interface Props {
   name: string;
   summary: string;
   accentColor: "gold" | "teal" | "red";
+  ordinal: number;
 }
 
-const { name, summary, accentColor } = Astro.props;
+const { name, summary, accentColor, ordinal } = Astro.props;
 
-const BORDER_COLOR: Record<Props["accentColor"], string> = {
-  gold: "border-t-gold",
-  teal: "border-t-teal",
-  red: "border-t-[#C23F35]",
+const ACCENT: Record<Props["accentColor"], { text: string; bar: string }> = {
+  gold: { text: "text-gold-text", bar: "bg-gold" },
+  teal: { text: "text-teal-text", bar: "bg-teal" },
+  red:  { text: "text-[#A02A22]", bar: "bg-[#C23F35]" },
 };
+
+const ord = String(ordinal).padStart(2, "0");
 ---
 
-<article class={`rounded-lg bg-cream p-6 border-t-[3px] ${BORDER_COLOR[accentColor]}`}>
-  <h3 class="text-lg font-bold text-brown">{name}</h3>
-  <p class="mt-2 text-sm leading-relaxed text-muted-brown font-serif">{summary}</p>
+<article class="grid grid-cols-[auto_1fr] gap-x-8 md:gap-x-12 items-start border-t border-border-cream pt-10">
+  <div class="flex items-start gap-4">
+    <span
+      class={`font-display italic ${ACCENT[accentColor].text} leading-[0.85] text-5xl md:text-6xl`}
+      style="font-variation-settings: 'opsz' 144, 'SOFT' 50, 'wght' 500;"
+      aria-hidden="true"
+    >
+      {ord}
+    </span>
+    <span
+      class={`hidden md:inline-block h-6 w-[2px] mt-4 ${ACCENT[accentColor].bar}`}
+      aria-hidden="true"
+    ></span>
+  </div>
+  <div>
+    <h3 class="font-display text-2xl md:text-3xl font-bold text-brown leading-tight">
+      {name}
+    </h3>
+    <p class="prose-body mt-4 text-base md:text-lg text-muted-brown max-w-[60ch]">
+      {summary}
+    </p>
+  </div>
 </article>

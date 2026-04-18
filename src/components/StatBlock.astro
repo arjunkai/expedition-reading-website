@@ -3,18 +3,28 @@ interface Props {
   value: string;
   label: string;
   color?: "gold" | "teal" | "brown";
+  size?: "display" | "default";
 }
 
-const { value, label, color = "brown" } = Astro.props;
+const { value, label, color = "brown", size = "display" } = Astro.props;
 
 const COLOR_CLASS: Record<NonNullable<Props["color"]>, string> = {
   gold: "text-gold-text",
   teal: "text-teal-text",
   brown: "text-brown",
 };
+
+const valueSize = size === "display"
+  ? "text-[clamp(3rem,8vw,5.5rem)]"
+  : "text-4xl";
 ---
 
-<div class="text-center">
-  <div class={`font-serif text-4xl leading-none font-bold ${COLOR_CLASS[color]}`}>{value}</div>
-  <div class="mt-2 text-sm text-muted-brown">{label}</div>
+<div>
+  <div
+    class={`font-display font-bold leading-[0.9] tracking-[-0.02em] tabular-nums ${valueSize} ${COLOR_CLASS[color]}`}
+    style="font-variation-settings: 'opsz' 144, 'SOFT' 15, 'wght' 700;"
+  >
+    {value}
+  </div>
+  <div class="mt-4 label-mono text-muted-brown">{label}</div>
 </div>

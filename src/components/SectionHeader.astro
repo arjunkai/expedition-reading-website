@@ -24,12 +24,23 @@ const EYEBROW_COLOR: Record<NonNullable<Props["eyebrowColor"]>, string> = {
 const alignClass = align === "center" ? "text-center mx-auto" : "";
 ---
 
-<div class={`max-w-[700px] ${alignClass}`}>
+<div class={`max-w-[720px] ${alignClass}`}>
   {eyebrow && (
-    <p class={`text-xs font-semibold tracking-[0.18em] uppercase ${EYEBROW_COLOR[eyebrowColor]}`}>
-      {eyebrow}
+    <div class={`label-mono flex items-center ${align === "center" ? "justify-center" : ""} gap-3 ${EYEBROW_COLOR[eyebrowColor]}`}>
+      <span aria-hidden="true" class="inline-block h-px w-8 bg-current opacity-60"></span>
+      <span>{eyebrow}</span>
+      <span aria-hidden="true" class="inline-block h-px w-8 bg-current opacity-60"></span>
+    </div>
+  )}
+  <h2
+    class="mt-6 text-3xl md:text-4xl lg:text-5xl font-bold text-brown"
+    style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
+  >
+    {title}
+  </h2>
+  {description && (
+    <p class="prose-body mt-6 text-lg text-muted-brown">
+      {description}
     </p>
   )}
-  <h2 class="mt-3 text-2xl md:text-3xl leading-tight text-brown">{title}</h2>
-  {description && <p class="mt-4 text-base leading-relaxed text-muted-brown font-serif">{description}</p>}
 </div>
