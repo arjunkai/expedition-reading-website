@@ -13,6 +13,7 @@ export const SITE = {
     { href: "/what-we-do", label: "What We Do" },
     { href: "/partners", label: "Partners" },
     { href: "/get-involved", label: "Get Involved" },
+    { href: "/contact", label: "Contact" },
   ],
 } as const;
 

@@ -24,6 +24,7 @@ describe("SITE config", () => {
       "/what-we-do",
       "/partners",
       "/get-involved",
+      "/contact",
     ]);
   });
 });
