@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
-import Button from "@/components/Button.astro";
 import CtaSection from "@/components/CtaSection.astro";
 import whyPhoto from "@/assets/images/helping-mamas-van.jpg";
 import arjunPhoto from "@/assets/images/team/arjun-bansal.jpg";
@@ -50,23 +49,34 @@ const values = [
   description="Expedition Reading is a 501(c)(3) nonprofit founded in 2022 by a team of physicians and students working to place books in the hands of children from birth onward."
 >
   <section class="relative px-6 pt-16 pb-20 md:pt-24 md:pb-24">
-    <div class="mx-auto max-w-[900px]">
-      <div class="label-mono flex items-center gap-3 text-gold-text">
-        <span aria-hidden="true" class="inline-block h-px w-10 bg-current"></span>
-        <span>About · Est. 2022</span>
+    <div class="mx-auto max-w-[1280px] grid gap-12 lg:gap-20 lg:grid-cols-[1.25fr_1fr] lg:items-center">
+      <div>
+        <div class="label-mono flex items-center gap-3 text-gold-text">
+          <span aria-hidden="true" class="inline-block h-px w-10 bg-current"></span>
+          <span>About · Est. 2022</span>
+        </div>
+        <h1
+          class="mt-6 font-display font-bold leading-[1.05] tracking-[-0.02em] text-brown text-[clamp(2.5rem,6vw,5rem)]"
+          style="font-variation-settings: 'opsz' 144, 'SOFT' 25, 'wght' 700;"
+        >
+          Literacy is a form of <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 600;">care</span>.
+        </h1>
+        <p class="prose-body mt-8 text-lg md:text-xl text-muted-brown max-w-[60ch]">
+          Expedition Reading was born from a family-driven conviction: that the first book a child holds is as formative as the first well-child visit.
+          We're a 501(c)(3) nonprofit founded in 2022 by three physicians and three of their children. What started as book drives in waiting rooms
+          has grown into a partnership model that places books at the very start of a child's life, and keeps replenishing them through
+          kindergarten and beyond.
+        </p>
       </div>
-      <h1
-        class="mt-6 font-display font-bold leading-[1.05] tracking-[-0.02em] text-brown text-[clamp(2.5rem,6vw,5rem)]"
-        style="font-variation-settings: 'opsz' 144, 'SOFT' 25, 'wght' 700;"
-      >
-        Literacy is a form of <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 600;">care</span>.
-      </h1>
-      <p class="prose-body mt-8 text-lg md:text-xl text-muted-brown max-w-[60ch]">
-        Expedition Reading was born from a family-driven conviction: that the first book a child holds is as formative as the first well-child visit.
-        We're a 501(c)(3) nonprofit founded in 2022 by three physicians and three of their children. What started as book drives in waiting rooms
-        has grown into a partnership model that places books at the very start of a child's life, and keeps replenishing them through
-        kindergarten and beyond.
-      </p>
+      <div class="relative">
+        <div class="w-full aspect-square max-w-[480px] mx-auto rounded-lg bg-paper ring-1 ring-brown/10 shadow-[0_24px_48px_-16px_rgba(43,29,20,0.22)] flex items-center justify-center p-8 md:p-12">
+          <img
+            src="/logo.svg"
+            alt="Expedition Reading — Books for Every Child"
+            class="w-full h-full object-contain"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
@@ -201,11 +211,7 @@ const values = [
         style="font-variation-settings: 'opsz' 24, 'SOFT' 50, 'wght' 500;"
       >
         Expedition Reading is a 501(c)(3) nonprofit organization. Donations are tax-deductible to the fullest extent allowed by law.
-        Our EIN and audited financials are available on request.
       </p>
-      <div class="mt-8">
-        <Button variant="secondary" href="/contact">Request financials</Button>
-      </div>
     </div>
   </section>
 

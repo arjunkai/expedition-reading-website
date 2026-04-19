@@ -139,27 +139,12 @@ import { SITE } from "@/lib/site";
             Prefer email? Write us at <a href={`mailto:${SITE.contactEmail}`} class="editorial-link">{SITE.contactEmail}</a>.
           </p>
         </form>
-
-        <div id="cf-success" class="hidden" aria-live="polite">
-          <div class="label-mono text-teal-text mb-3">
-            Message received
-          </div>
-          <h3
-            class="font-display font-bold text-2xl md:text-3xl text-brown leading-tight"
-            style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
-          >
-            Thanks. We got it.
-          </h3>
-          <p class="prose-body mt-4 text-base text-muted-brown">
-            You'll hear from us within a week, usually within two business days. If you don't, send a follow-up. The filter sometimes catches things.
-          </p>
-        </div>
       </div>
     </div>
   </section>
 
   <section class="bg-paper border-y border-border-cream px-6 py-20 md:py-28">
-    <div class="mx-auto max-w-[1100px] grid gap-12 md:gap-20 md:grid-cols-[1fr_1fr]">
+    <div class="mx-auto max-w-[1100px] grid gap-12 md:gap-x-16 md:gap-y-14 md:grid-cols-3">
       <div class="min-w-0">
         <p class="label-mono text-gold-text">Email</p>
         <p
@@ -185,15 +170,17 @@ import { SITE } from "@/lib/site";
           Photos from recent drives, partner features, and day-to-day work. DMs open.
         </p>
       </div>
-    </div>
 
-    <div class="mx-auto max-w-[1100px] mt-20">
-      <div>
+      <div class="min-w-0">
         <p class="label-mono text-red-text">Mailing</p>
-        <p class="prose-body mt-4 text-base md:text-lg text-brown leading-relaxed">
-          Expedition Reading, Inc.<br />
-          Marietta, GA<br />
-          <span class="text-sm text-muted-brown">Full mailing address available on request for check donations.</span>
+        <p
+          class="mt-4 font-display font-bold text-xl md:text-2xl text-brown leading-tight"
+          style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
+        >
+          Expedition Reading, Inc.<br />Marietta, GA
+        </p>
+        <p class="prose-body mt-6 text-base text-muted-brown">
+          Full mailing address available on request for check donations.
         </p>
       </div>
     </div>
@@ -221,7 +208,6 @@ import { SITE } from "@/lib/site";
 <script>
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
   const statusEl = document.getElementById("cf-status");
-  const successEl = document.getElementById("cf-success");
 
   // Pre-select the inquiry dropdown when the user arrives with ?type=...
   // (e.g. the Host-a-drive / Volunteer CTAs on /get-involved link with ?type=drives|volunteer).
@@ -262,9 +248,7 @@ import { SITE } from "@/lib/site";
       });
 
       if (response.ok) {
-        form.classList.add("hidden");
-        successEl?.classList.remove("hidden");
-        successEl?.scrollIntoView({ behavior: "smooth", block: "center" });
+        window.location.assign("/message-received/");
       } else {
         if (statusEl) statusEl.textContent = "Something went wrong. Please email us directly.";
         if (submitButton) submitButton.disabled = false;
