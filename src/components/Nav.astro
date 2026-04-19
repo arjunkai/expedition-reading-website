@@ -25,7 +25,7 @@ const isActive = (href: string) => pathname === href || pathname === `${href}/`;
         <li>
           <a
             href={item.href}
-            class={`font-mono text-xs uppercase tracking-[0.18em] font-medium text-brown hover:text-gold-text transition-colors ${isActive(item.href) ? "text-gold-text" : ""}`}
+            class={`font-mono text-sm uppercase tracking-[0.16em] font-medium text-brown hover:text-gold-text transition-colors ${isActive(item.href) ? "text-gold-text" : ""}`}
             aria-current={isActive(item.href) ? "page" : undefined}
           >
             {item.label}
