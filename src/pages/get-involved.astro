@@ -5,10 +5,10 @@ import SectionHeader from "@/components/SectionHeader.astro";
 import { SITE } from "@/lib/site";
 
 const tiers = [
-  { amount: "$20",  description: "Puts one book in a child's hands." },
-  { amount: "$50",  description: "Stocks a hospital bassinet-bag set." },
-  { amount: "$100", description: "Equips a classroom library shelf." },
-  { amount: "$500", description: "Underwrites an entire school's seasonal drive." },
+  { label: "10 books",        amount: "$20",  description: "Puts ten books in kids' hands. We buy in bulk and at partner-discount pricing, so roughly $2 moves one book end-to-end." },
+  { label: "A bassinet drop", amount: "$50",  description: "Covers a hospital-delivery run: about 25 newborns leave with a first book in their going-home bag." },
+  { label: "A classroom",     amount: "$100", description: "Stocks a Title I classroom library shelf with around 50 age-appropriate titles." },
+  { label: "A school drive",  amount: "$500", description: "Underwrites an entire school's seasonal drive — roughly 250 books, enough for every grade to take some home." },
 ];
 ---
 
@@ -53,15 +53,16 @@ const tiers = [
             We're a 501(c)(3) nonprofit; your gift is deductible to the fullest extent allowed by law.
           </p>
           <div class="mt-10">
-            <Button variant="primary" href="https://www.paypal.com/donate">Donate via PayPal →</Button>
+            <Button variant="primary" href="https://www.paypal.com/ncp/payment/XCVNC5KVA8ECQ">Donate via PayPal →</Button>
           </div>
         </div>
         <div>
           <div class="grid gap-5 sm:grid-cols-2">
             {tiers.map((t) => (
               <div class="rounded-lg border border-border-cream bg-cream p-6">
+                <div class="label-mono text-teal-text">{t.label}</div>
                 <div
-                  class="font-display font-bold text-3xl md:text-4xl text-gold-text tabular-nums leading-none"
+                  class="mt-2 font-display font-bold text-3xl md:text-4xl text-gold-text tabular-nums leading-none"
                   style="font-variation-settings: 'opsz' 144, 'SOFT' 15, 'wght' 700;"
                 >
                   {t.amount}
