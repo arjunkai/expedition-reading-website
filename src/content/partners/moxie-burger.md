@@ -4,4 +4,5 @@ blurb: A local Marietta restaurant that hosts our donation bins in its lobby and
 order: 4
 instagram: https://www.instagram.com/moxieburger
 facebook: https://www.facebook.com/moxieburger/
+logo: /partners/moxie-burger.jpg
 ---

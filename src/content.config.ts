@@ -54,6 +54,7 @@ const partners = defineCollection({
     instagram: z.string().url().optional(),
     facebook: z.string().url().optional(),
     story: z.string().url().optional(),
+    logo: z.string().optional(),
   }),
 });
 
