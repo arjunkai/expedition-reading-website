@@ -64,7 +64,7 @@ const types = [
               <p class="prose-body mt-4 text-base md:text-lg text-muted-brown max-w-[62ch]">
                 {p.data.blurb}
               </p>
-              {(p.data.website || p.data.instagram || p.data.facebook) && (
+              {(p.data.website || p.data.instagram || p.data.facebook || p.data.story) && (
                 <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
                   {p.data.website && (
                     <a href={p.data.website} rel="noopener noreferrer" target="_blank"
@@ -82,6 +82,12 @@ const types = [
                     <a href={p.data.facebook} rel="noopener noreferrer" target="_blank"
                        class="label-mono text-brown hover:text-gold-text transition-colors">
                       Facebook →
+                    </a>
+                  )}
+                  {p.data.story && (
+                    <a href={p.data.story} rel="noopener noreferrer" target="_blank"
+                       class="label-mono text-brown hover:text-gold-text transition-colors">
+                      Read their story →
                     </a>
                   )}
                 </div>
