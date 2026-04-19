@@ -228,6 +228,26 @@ import { SITE } from "@/lib/site";
   const statusEl = document.getElementById("cf-status");
   const successEl = document.getElementById("cf-success");
 
+  // Pre-select the inquiry dropdown when the user arrives with ?type=...
+  // (e.g. the Host-a-drive / Volunteer CTAs on /get-involved link with ?type=drives|volunteer).
+  const inquiryTypeMap: Record<string, string> = {
+    drives: "Donations / book drives",
+    donations: "Donations / book drives",
+    volunteer: "Volunteering",
+    volunteering: "Volunteering",
+    partnership: "Partnership",
+    media: "Media or press",
+    press: "Media or press",
+  };
+  const paramType = new URLSearchParams(window.location.search).get("type");
+  if (paramType) {
+    const mapped = inquiryTypeMap[paramType.toLowerCase()];
+    const select = document.getElementById("cf-inquiry") as HTMLSelectElement | null;
+    if (mapped && select && Array.from(select.options).some((o) => o.value === mapped)) {
+      select.value = mapped;
+    }
+  }
+
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!form.checkValidity()) {
