@@ -4,9 +4,9 @@ Rebuild of https://expeditionreading.org from scratch. Nonprofit (501(c)(3)) fou
 
 ## Status
 
-**Phase:** Phase 1 local build complete — ready to push to GitHub & deploy to Cloudflare Pages.
-**Next steps:** Task 14 (create GitHub repo) + Task 15 (Cloudflare Pages setup). Both are user-assisted — see plan at `docs/superpowers/plans/2026-04-18-phase-1-foundation-and-home.md`.
-**Staging URL:** _(set after Task 15)_
+**Phase:** Phase 1 deployed — site live at https://expeditionreading.org (apex + www, SSL enabled via Cloudflare Pages).
+**Next steps:** Phase 2 — content + polish pass on the remaining pages (about, impact, what-we-do, get-involved, partners, contact are scaffolded).
+**Live URL:** https://expeditionreading.org
 
 Phase 1 delivers: working home page (bg-cream, gold/teal/brown editorial palette, all content from Content Collections), Playwright + axe e2e tests passing, GitHub Actions CI green locally, WCAG AA contrast compliant.
 
