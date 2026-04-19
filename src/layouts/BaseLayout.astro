@@ -24,7 +24,7 @@ const { title, description, includeOrgSchema = false } = Astro.props;
     <SEO title={title} description={description} includeOrgSchema={includeOrgSchema} />
     <script is:inline>
       // Killswitch: unregister any service workers left over from the old WordPress site
-      // and purge their caches. Safe to leave in — no-op if no SWs are registered.
+      // and purge their caches. Safe to leave in; a no-op if no SWs are registered.
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.getRegistrations()
           .then((regs) => Promise.all(regs.map((r) => r.unregister())))

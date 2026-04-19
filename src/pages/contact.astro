@@ -24,6 +24,7 @@ import { SITE } from "@/lib/site";
         Whether you're interested in partnering, donating, hosting a drive, volunteering, or you just have a question,
         drop us a message below. We aim to respond within a week, usually sooner.
       </p>
+
     </div>
   </section>
 
@@ -48,11 +49,11 @@ import { SITE } from "@/lib/site";
           novalidate
           class="mt-8 space-y-5"
         >
-          {/* Web3Forms auth — access key is domain-scoped and safe to commit. */}
+          {/* Web3Forms auth. Access key is domain-scoped and safe to commit. */}
           <input type="hidden" name="access_key" value="cd2a5c1f-8605-4780-a1e4-81e3a0d3d3a2" />
-          <input type="hidden" name="subject" value="Contact form — expeditionreading.org" />
+          <input type="hidden" name="subject" value="Contact form: expeditionreading.org" />
           <input type="hidden" name="from_name" value="Expedition Reading Website" />
-          {/* Honeypot — visually hidden; bots fill it, real users don't. */}
+          {/* Honeypot. Visually hidden; bots fill it, real users don't. */}
           <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true" />
 
           <div class="grid gap-5 sm:grid-cols-2">
@@ -147,10 +148,10 @@ import { SITE } from "@/lib/site";
             class="font-display font-bold text-2xl md:text-3xl text-brown leading-tight"
             style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
           >
-            Thanks — we got it.
+            Thanks. We got it.
           </h3>
           <p class="prose-body mt-4 text-base text-muted-brown">
-            You'll hear from us within a week, usually within two business days. If you don't, send a follow-up — the filter sometimes catches things.
+            You'll hear from us within a week, usually within two business days. If you don't, send a follow-up. The filter sometimes catches things.
           </p>
         </div>
       </div>
@@ -186,19 +187,13 @@ import { SITE } from "@/lib/site";
       </div>
     </div>
 
-    <div class="mx-auto max-w-[1100px] mt-20 grid gap-12 md:grid-cols-[1fr_1fr]">
+    <div class="mx-auto max-w-[1100px] mt-20">
       <div>
         <p class="label-mono text-red-text">Mailing</p>
         <p class="prose-body mt-4 text-base md:text-lg text-brown leading-relaxed">
           Expedition Reading, Inc.<br />
           Marietta, GA<br />
           <span class="text-sm text-muted-brown">Full mailing address available on request for check donations.</span>
-        </p>
-      </div>
-      <div>
-        <p class="label-mono text-gold-text">Legal &amp; financials</p>
-        <p class="prose-body mt-4 text-base md:text-lg text-brown">
-          Our EIN, annual Form 990, and audited financials are available on request to donors, grant reviewers, and journalists.
         </p>
       </div>
     </div>

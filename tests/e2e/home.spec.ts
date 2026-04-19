@@ -25,15 +25,22 @@ test.describe("home page", () => {
     await expect(page.getByRole("heading", { name: "Community Drives" })).toBeVisible();
   });
 
-  test("Donate buttons in nav and final CTA link to /get-involved#donate", async ({ page }) => {
+  test("home page has donate links pointing to PayPal or the get-involved page", async ({ page }) => {
     await page.goto("/");
     const donateLinks = page.getByRole("link", { name: /donate/i });
     const count = await donateLinks.count();
     expect(count).toBeGreaterThanOrEqual(2);
+    const hrefs: string[] = [];
     for (let i = 0; i < count; i++) {
       const href = await donateLinks.nth(i).getAttribute("href");
-      expect(href).toContain("/get-involved");
+      expect(href, `donate link #${i} must target PayPal or /get-involved`).toMatch(
+        /\/get-involved|paypal\.com/,
+      );
+      if (href) hrefs.push(href);
     }
+    // Expect a mix: at least one goes straight to PayPal, at least one to the get-involved tier page.
+    expect(hrefs.some((h) => h.includes("paypal.com"))).toBe(true);
+    expect(hrefs.some((h) => h.includes("/get-involved"))).toBe(true);
   });
 
   test("emits no console errors on load", async ({ page }) => {

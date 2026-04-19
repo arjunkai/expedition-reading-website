@@ -1,0 +1,63 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/Button.astro";
+import { SITE } from "@/lib/site";
+---
+
+<BaseLayout
+  title="Message received"
+  description="Thanks for reaching out to Expedition Reading. We'll respond within a week, usually sooner."
+>
+  <section class="px-6 pt-20 pb-16 md:pt-28 md:pb-20">
+    <div class="mx-auto max-w-[820px] text-center">
+      <div class="label-mono flex items-center justify-center gap-3 text-teal-text">
+        <span aria-hidden="true" class="inline-block h-px w-10 bg-current"></span>
+        <span>Message received</span>
+        <span aria-hidden="true" class="inline-block h-px w-10 bg-current"></span>
+      </div>
+
+      <h1
+        class="mt-8 font-display font-bold leading-[1.05] tracking-[-0.02em] text-brown text-[clamp(2.5rem,6vw,5rem)]"
+        style="font-variation-settings: 'opsz' 144, 'SOFT' 25, 'wght' 700;"
+      >
+        Thanks. <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 600;">We got it.</span>
+      </h1>
+
+      <p class="prose-body mt-8 text-lg md:text-xl text-muted-brown max-w-[56ch] mx-auto">
+        Your note is in our inbox. We aim to respond within a week, usually within two business days. If you don't hear back, send a follow-up. The filter sometimes catches things.
+      </p>
+
+      <p class="prose-body mt-6 text-base md:text-lg text-muted-brown max-w-[56ch] mx-auto">
+        Questions in the meantime? Email
+        <a href={`mailto:${SITE.contactEmail}`} class="editorial-link">{SITE.contactEmail}</a>.
+      </p>
+
+      <div class="mt-12 flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center">
+        <Button variant="primary" href="/">Back to home</Button>
+        <Button variant="secondary" href="/what-we-do">See what we do</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper border-y border-border-cream px-6 py-16 md:py-20">
+    <div class="mx-auto max-w-[900px] text-center">
+      <div class="label-mono text-gold-text mb-6">
+        While you're here
+      </div>
+      <h2
+        class="font-display font-bold leading-[1.1] tracking-[-0.01em] text-brown text-[clamp(1.75rem,3.5vw,2.75rem)] max-w-[24ch] mx-auto"
+        style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
+      >
+        Every book starts with a partner, a donor, or a volunteer.
+      </h2>
+      <p class="prose-body mt-6 text-base md:text-lg text-muted-brown max-w-[56ch] mx-auto">
+        If your note wasn't about one of these already, here are three ways the work grows.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="secondary" href="/get-involved#donate">Donate</Button>
+        <Button variant="secondary" href="/get-involved#host">Host a drive</Button>
+        <Button variant="secondary" href="/get-involved#volunteer">Volunteer</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
