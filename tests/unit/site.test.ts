@@ -18,11 +18,10 @@ describe("SITE config", () => {
     expect(SITE.contactEmail).toBe("contact@expeditionreading.org");
   });
 
-  it("exposes a nav array with the five primary pages in order", () => {
+  it("exposes a nav array with the primary pages in order", () => {
     expect(SITE.nav.map((n) => n.href)).toEqual([
       "/about",
       "/what-we-do",
-      "/impact",
       "/partners",
       "/get-involved",
     ]);
