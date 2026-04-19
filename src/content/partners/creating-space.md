@@ -1,5 +1,8 @@
 ---
 name: Creating Space
-blurb: A community organization devoted to equitable learning environments. Creating Space helps us reach families in settings where trust with formal institutions is still being built.
+blurb: A local custom basement builder that has backed our work through sponsorship and community drives.
 order: 5
+website: https://creatingspace.com/
+facebook: https://www.facebook.com/CreatingSpaceBasements/
+logo: /partners/creating-space.jpeg
 ---
