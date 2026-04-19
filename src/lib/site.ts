@@ -7,6 +7,7 @@ export const SITE = {
   contactEmail: "contact@expeditionreading.org",
   socials: {
     instagram: "https://www.instagram.com/expeditionreading",
+    facebook: "https://www.facebook.com/expeditionreading",
   },
   nav: [
     { href: "/about", label: "About" },
