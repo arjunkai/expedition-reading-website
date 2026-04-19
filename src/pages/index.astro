@@ -17,13 +17,9 @@ const programs = (await getCollection("programs")).sort(
   (a, b) => a.data.order - b.data.order,
 );
 
-const partners = [
-  "Book Nook Marietta",
-  "Helping Mamas",
-  "Marietta City Schools",
-  "Moxie Burger",
-  "Creating Space",
-];
+const partnerLogos = (await getCollection("partners")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
 <BaseLayout
@@ -163,23 +159,30 @@ const partners = [
   </section>
 
   {/* ══════════════ PARTNERS — ACKNOWLEDGMENT STYLE ══════════════ */}
-  <section class="px-6 py-20">
-    <div class="mx-auto max-w-[900px] text-center">
-      <div class="label-mono text-teal-text mb-8">
-        Made Possible With
+  <section class="px-6 py-24 md:py-28">
+    <div class="mx-auto max-w-[1200px] text-center">
+      <div class="label-mono text-teal-text mb-6">
+        With Gratitude
       </div>
-      <ul
-        class="prose-body text-xl md:text-2xl leading-relaxed text-brown flex flex-col sm:flex-row sm:flex-wrap sm:justify-center items-center gap-y-2 sm:gap-y-0"
-        style="font-variation-settings: 'opsz' 24, 'SOFT' 60, 'wght' 400;"
+      <h2
+        class="font-display leading-[1.1] tracking-[-0.01em] text-brown text-[clamp(1.75rem,4vw,3rem)] max-w-[22ch] mx-auto"
+        style="font-variation-settings: 'opsz' 144, 'SOFT' 40, 'wght' 600;"
       >
-        {partners.map((name, i) => (
-          <li class="flex items-center">
-            <span class="whitespace-nowrap">{name}</span>
-            {i < partners.length - 1 && <span class="text-gold mx-2 hidden sm:inline" aria-hidden="true">&middot;</span>}
+        The people and places who <span class="italic" style="font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 500;">made this real</span>.
+      </h2>
+      <ul class="mt-14 flex flex-wrap justify-center items-center gap-5 md:gap-6">
+        {partnerLogos.map((p) => (
+          <li class="h-28 w-44 md:h-36 md:w-52 rounded-xl bg-white border border-border-cream flex items-center justify-center p-4 md:p-5 shadow-[0_1px_3px_rgba(43,29,20,0.05)]">
+            <img
+              src={p.data.logo}
+              alt={p.data.name}
+              loading="lazy"
+              class="max-h-full max-w-full object-contain"
+            />
           </li>
         ))}
       </ul>
-      <div class="mt-10">
+      <div class="mt-14">
         <a href="/partners" class="editorial-link label-mono text-brown hover:text-gold-text">
           Become a partner →
         </a>
