@@ -159,23 +159,23 @@ import { SITE } from "@/lib/site";
 
   <section class="bg-paper border-y border-border-cream px-6 py-20 md:py-28">
     <div class="mx-auto max-w-[1100px] grid gap-12 md:gap-20 md:grid-cols-[1fr_1fr]">
-      <div>
+      <div class="min-w-0">
         <p class="label-mono text-gold-text">Email</p>
         <p
-          class="mt-4 font-display font-bold text-2xl md:text-3xl text-brown leading-tight"
+          class="mt-4 font-display font-bold text-lg sm:text-xl md:text-2xl text-brown leading-tight [overflow-wrap:anywhere]"
           style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
         >
-          <a href={`mailto:${SITE.contactEmail}`} class="editorial-link break-all">{SITE.contactEmail}</a>
+          <a href={`mailto:${SITE.contactEmail}`} class="editorial-link">{SITE.contactEmail}</a>
         </p>
         <p class="prose-body mt-6 text-base text-muted-brown">
           General inquiries, partnership questions, donation follow-up, media requests. Everything lands in the same inbox and we triage daily.
         </p>
       </div>
 
-      <div>
+      <div class="min-w-0">
         <p class="label-mono text-teal-text">Social</p>
         <p
-          class="mt-4 font-display font-bold text-2xl md:text-3xl text-brown leading-tight"
+          class="mt-4 font-display font-bold text-xl md:text-2xl text-brown leading-tight"
           style="font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 700;"
         >
           <a href={SITE.socials.instagram} rel="noopener noreferrer" target="_blank" class="editorial-link">@expeditionreading</a>
